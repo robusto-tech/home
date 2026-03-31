@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Robusto.tech — Digital Growth Agency Lahore</title>
+<base target="_top">
+<style>
+:root{
+--bg:#0a0a0f;--bg2:#111118;--bg3:#16161f;--card:#1a1a26;--card2:#1e1e2e;
+--border:#ffffff18;--border2:#ffffff28;
+--text:#f0f0f8;--text2:#a0a0b8;--text3:#606080;
+--orange:#ff6b1a;--orange2:#ff8c42;--orange3:#ff4500;
+--orange-bg:#ff6b1a18;--orange-border:#ff6b1a40;
+--glass:rgba(255,255,255,0.04);--glass2:rgba(255,255,255,0.08);
+--radius:12px;--radius2:20px;--radius3:8px;
+}
+[data-theme="light"]{
+--bg:#f8f8fc;--bg2:#f0f0f8;--bg3:#e8e8f4;--card:#ffffff;--card2:#f4f4fc;
+--border:#00000012;--border2:#00000022;
+--text:#1a1a2e;--text2:#444460;--text3:#8888a0;
+--glass:rgba(255,255,255,0.7);--glass2:rgba(255,255,255,0.9);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:3px}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 5%;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s}
+[data-theme="light"] nav{background:rgba(248,248,252,0.9)}
+.logo{display:flex;align-items:center;gap:12px;font-weight:700;font-size:1.4rem}
+.logo-icon{width:42px;height:42px}
+.logo-icon img{width:100%;height:100%;object-fit:contain}
+.logo span{background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo small{font-size:.65rem;color:var(--text2);font-weight:400;display:block;margin-top:-4px;-webkit-text-fill-color:var(--text2)}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.9rem;color:var(--text2);transition:color .2s}
+.nav-links a:hover{color:var(--orange)}
+.theme-toggle{background:var(--card);border:1px solid var(--border);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:all .2s}
+.theme-toggle:hover{border-color:var(--orange)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.hamburger span{width:24px;height:2px;background:var(--text);transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1.5rem 5%;z-index:999;flex-direction:column;gap:1rem}
+.mobile-menu a{font-size:1rem;color:var(--text2);padding:.5rem 0;border-bottom:1px solid var(--border)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15}
+.orb1{width:600px;height:600px;background:var(--orange);top:-200px;right:-100px}
+.orb2{width:400px;height:400px;background:#6600ff;bottom:-100px;left:-100px}
+.orb3{width:300px;height:300px;background:var(--orange2);top:50%;left:40%;transform:translate(-50%,-50%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%;max-width:1300px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:50px;padding:.4rem 1rem;font-size:.8rem;color:var(--orange2);margin-bottom:1.5rem}
+.hero-badge::before{content:'';width:8px;height:8px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+h1{font-size:clamp(2.2rem,4vw,3.8rem);font-weight:800;line-height:1.1;margin-bottom:1.2rem}
+h1 span{background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:1.1rem;color:var(--text2);margin-bottom:2rem;max-width:500px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--orange),var(--orange3));color:#fff;padding:.8rem 1.8rem;border-radius:var(--radius);font-weight:700;border:none;cursor:pointer;font-size:.95rem;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,26,.4)}
+.btn-secondary{background:transparent;color:var(--text);padding:.8rem 1.8rem;border-radius:var(--radius);font-weight:600;border:1px solid var(--border2);cursor:pointer;font-size:.95rem;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--orange);color:var(--orange);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem}
+.hero-stat strong{display:block;font-size:2rem;font-weight:800;background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-stat span{font-size:.8rem;color:var(--text2)}
+.dashboard-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);padding:1.5rem;position:relative;overflow:hidden}
+.dashboard-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--orange-bg),transparent);pointer-events:none}
+.dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.dash-title{font-size:.85rem;font-weight:600;color:var(--text2)}
+.dash-live{display:flex;align-items:center;gap:6px;font-size:.75rem;color:#22dd88}
+.dash-live::before{content:'';width:6px;height:6px;background:#22dd88;border-radius:50%;animation:pulse 1.5s infinite}
+.kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.kpi-box{background:var(--glass);border:1px solid var(--border);border-radius:var(--radius3);padding:1rem}
+.kpi-val{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.kpi-label{font-size:.75rem;color:var(--text2)}
+.kpi-delta{font-size:.75rem;color:#22dd88;margin-top:2px}
+.mini-chart{height:60px;margin-bottom:1rem}
+.mini-chart svg{width:100%;height:100%}
+.platform-bars{display:flex;flex-direction:column;gap:8px}
+.p-bar{display:flex;align-items:center;gap:8px;font-size:.75rem}
+.p-bar-track{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.p-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--orange),var(--orange2));transition:width 1.5s ease}
+.p-bar-label{color:var(--text2);min-width:50px}
+.p-bar-pct{color:var(--orange2);min-width:30px;text-align:right}
+section{padding:80px 5%}
+.container{max-width:1300px;margin:0 auto}
+.section-badge{display:inline-block;background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:50px;padding:.3rem .9rem;font-size:.8rem;color:var(--orange2);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px}
+h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin-bottom:1rem}
+h2 span{background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.section-sub{color:var(--text2);max-width:600px;margin-bottom:3rem;font-size:1.05rem}
+.clients{padding:40px 5%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)}
+.clients-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;gap:3rem;overflow:hidden}
+.clients-label{font-size:.8rem;color:var(--text3);white-space:nowrap;min-width:120px}
+.clients-scroll{display:flex;gap:3rem;animation:scrollClients 15s linear infinite;align-items:center}
+@keyframes scrollClients{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.client-logo{display:flex;align-items:center;gap:8px;white-space:nowrap;opacity:.5;font-weight:700;font-size:.9rem;transition:opacity .2s}
+.client-logo:hover{opacity:1}
+.client-dot{width:30px;height:30px;border-radius:6px;background:linear-gradient(135deg,var(--orange),var(--orange2));display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:#fff;flex-shrink:0}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);padding:2rem;position:relative;overflow:hidden;transition:all .3s;cursor:default}
+.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange2));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.service-card:hover{transform:translateY(-6px);border-color:var(--orange-border)}
+.service-card:hover::after{transform:scaleX(1)}
+.service-icon{width:54px;height:54px;border-radius:14px;background:var(--orange-bg);border:1px solid var(--orange-border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.2rem}
+.service-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.6rem}
+.service-card p{font-size:.9rem;color:var(--text2);line-height:1.6}
+.service-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:1rem}
+.tag{background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:50px;padding:.2rem .7rem;font-size:.75rem;color:var(--orange2)}
+.analytics-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.analytics-features{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.af-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);transition:border-color .2s}
+.af-item:hover{border-color:var(--orange-border)}
+.af-icon{width:40px;height:40px;border-radius:10px;background:var(--orange-bg);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.af-item h4{font-size:.9rem;font-weight:600;margin-bottom:.2rem}
+.af-item p{font-size:.8rem;color:var(--text2)}
+.big-chart{background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);padding:1.5rem;height:420px;position:relative;overflow:hidden}
+.chart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+.chart-tabs{display:flex;gap:.5rem}
+.chart-tab{padding:.3rem .8rem;border-radius:var(--radius3);font-size:.8rem;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--text2);transition:all .2s}
+.chart-tab.active{background:var(--orange);border-color:var(--orange);color:#fff}
+.chart-area{position:relative;height:280px}
+#growthCanvas{width:100%;height:100%}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);overflow:hidden;transition:all .3s}
+.case-card:hover{transform:translateY(-4px);border-color:var(--orange-border)}
+.case-header{background:linear-gradient(135deg,var(--orange3),var(--orange));padding:1.5rem}
+.case-client{font-size:.85rem;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:.3rem}
+.case-title{font-size:1.2rem;font-weight:800;color:#fff}
+.case-body{padding:1.5rem}
+.case-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.2rem}
+.metric{text-align:center}
+.metric strong{display:block;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.metric small{font-size:.75rem;color:var(--text2)}
+.case-desc{font-size:.88rem;color:var(--text2);line-height:1.6;border-top:1px solid var(--border);padding-top:1rem}
+.seo-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.entity-box{background:var(--card);border:1px solid var(--orange-border);border-radius:var(--radius2);padding:1.5rem}
+.entity-box h3{font-size:1rem;font-weight:700;margin-bottom:1rem}
+.entity-tag{display:inline-flex;align-items:center;gap:6px;background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:50px;padding:.3rem .8rem;font-size:.8rem;margin:.3rem .2rem;color:var(--text)}
+.entity-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.connection-line{height:2px;background:linear-gradient(90deg,transparent,var(--orange),transparent);margin:.8rem 0}
+.seo-pillars{display:flex;flex-direction:column;gap:.8rem}
+.seo-pillar{display:flex;align-items:center;gap:1rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:.8rem 1rem;transition:border-color .2s}
+.seo-pillar:hover{border-color:var(--orange-border)}
+.pillar-num{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--orange),var(--orange3));display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:#fff;flex-shrink:0}
+.seo-pillar h4{font-size:.9rem;font-weight:600;margin-bottom:.2rem}
+.seo-pillar p{font-size:.8rem;color:var(--text2)}
+.testimonials{background:var(--bg2)}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);padding:1.8rem;position:relative;transition:all .3s}
+.testi-card:hover{border-color:var(--orange-border);transform:translateY(-4px)}
+.testi-card::before{content:'❝';position:absolute;top:1rem;right:1.5rem;font-size:3rem;color:var(--orange-border);font-family:Georgia,serif}
+.stars{color:var(--orange);margin-bottom:.8rem;font-size:1rem}
+.testi-text{font-size:.92rem;color:var(--text2);line-height:1.7;font-style:italic;margin-bottom:1.2rem}
+.testi-author{display:flex;align-items:center;gap:.75rem}
+.author-av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;color:#fff;flex-shrink:0}
+.author-name{font-weight:600;font-size:.9rem}
+.author-role{font-size:.78rem;color:var(--text2)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);padding:2rem;position:relative;transition:all .3s}
+.price-card.featured{border:2px solid var(--orange);background:linear-gradient(135deg,var(--card),var(--orange-bg))}
+.price-card.featured::before{content:'Most Popular';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;padding:.3rem 1rem;border-radius:50px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.price-name{font-size:.85rem;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem}
+.price-amount{font-size:2.5rem;font-weight:800;line-height:1}
+.price-amount span{font-size:1rem;font-weight:400;color:var(--text2)}
+.price-desc{font-size:.85rem;color:var(--text2);margin:.5rem 0 1.5rem}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.8rem}
+.price-features li{display:flex;align-items:center;gap:.6rem;font-size:.88rem;color:var(--text2)}
+.price-features li::before{content:'✓';color:var(--orange);font-weight:700;flex-shrink:0}
+.price-features li.no::before{content:'✗';color:var(--text3)}
+.price-features li.no{opacity:.5}
+.btn-price{width:100%;padding:.75rem;border-radius:var(--radius);font-weight:700;font-size:.9rem;cursor:pointer;transition:all .3s;border:none}
+.btn-price.outline{background:transparent;border:1px solid var(--border2);color:var(--text)}
+.btn-price.outline:hover{border-color:var(--orange);color:var(--orange)}
+.btn-price.solid{background:linear-gradient(135deg,var(--orange),var(--orange3));color:#fff}
+.btn-price.solid:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,26,.4)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .3s}
+.faq-item:hover{border-color:var(--orange-border)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.2rem;cursor:pointer;gap:1rem}
+.faq-q h4{font-size:.92rem;font-weight:600}
+.faq-icon{width:24px;height:24px;border-radius:6px;background:var(--orange-bg);border:1px solid var(--orange-border);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--orange);flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 1.2rem 1.2rem;font-size:.88rem;color:var(--text2);line-height:1.6}
+.faq-item.open .faq-a{display:block}
+.wizard-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius2);padding:2.5rem;max-width:800px;margin:0 auto;position:relative;overflow:hidden}
+.wizard-wrap::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--orange-bg),transparent);pointer-events:none}
+input[type=text],input[type=email],input[type=tel],textarea,select{width:100%;padding:.75rem 1rem;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius3);color:var(--text);font-size:.9rem;font-family:inherit;transition:border-color .2s;outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--orange)}
+textarea{resize:vertical;min-height:100px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+label{display:block;font-size:.83rem;color:var(--text2);margin-bottom:.4rem}
+#cfStatus{display:none;text-align:center;font-size:1rem;font-weight:700;padding:.75rem 1rem;border-radius:var(--radius3);margin-top:.8rem}
+#cfStatus.waiting{color:var(--orange2);background:var(--orange-bg);border:1px solid var(--orange-border)}
+#cfStatus.done{color:#22dd88;background:rgba(34,221,136,0.1);border:1px solid rgba(34,221,136,0.3)}
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-detail{display:flex;align-items:flex-start;gap:1rem;padding:1rem;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:.8rem;transition:border-color .2s}
+.contact-detail:hover{border-color:var(--orange-border)}
+.contact-icon{width:40px;height:40px;border-radius:10px;background:var(--orange-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+.contact-icon img{width:70%;height:70%;object-fit:contain}
+.contact-text strong{display:block;font-size:.85rem;font-weight:600}
+.contact-text span{font-size:.83rem;color:var(--text2)}
+.social-links{display:flex;gap:.8rem;margin-top:1.5rem}
+.social-btn{width:44px;height:44px;border-radius:12px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:pointer}
+.social-btn:hover{border-color:var(--orange);background:var(--orange-bg)}
+.social-btn img{width:60%;height:60%;object-fit:contain}
+.wa-float{position:fixed;bottom:30px;right:30px;z-index:500}
+.wa-btn{width:60px;height:60px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);cursor:pointer;transition:all .3s;animation:waBounce 3s ease-in-out infinite}
+.wa-btn img{width:60%;height:60%;object-fit:contain}
+@keyframes waBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.wa-btn:hover{transform:scale(1.1)!important;animation:none}
+.wa-label{position:absolute;right:70px;top:50%;transform:translateY(-50%);background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:.4rem .9rem;font-size:.8rem;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
+.wa-float:hover .wa-label{opacity:1}
+.social-float{position:fixed;left:20px;top:50%;transform:translateY(-50%);z-index:500;display:flex;flex-direction:column;gap:.6rem}
+.sf-btn{width:38px;height:38px;border-radius:10px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;position:relative}
+.sf-btn:hover{border-color:var(--orange);transform:scale(1.1)}
+.sf-btn img{width:60%;height:60%;object-fit:contain}
+.sf-tooltip{position:absolute;left:48px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius3);padding:.3rem .7rem;font-size:.75rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+.sf-btn:hover .sf-tooltip{opacity:1}
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:3rem 5% 2rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem;max-width:1300px;margin-left:auto;margin-right:auto}
+.footer-brand p{font-size:.88rem;color:var(--text2);margin:.8rem 0 1rem}
+.footer-col h4{font-size:.9rem;font-weight:700;margin-bottom:1rem;color:var(--orange2)}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:.5rem}
+.footer-col ul li a{font-size:.85rem;color:var(--text2);transition:color .2s}
+.footer-col ul li a:hover{color:var(--orange)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.82rem;color:var(--text2);max-width:1300px;margin:0 auto}
+.ai-badge{display:inline-flex;align-items:center;gap:6px;background:var(--orange-bg);border:1px solid var(--orange-border);border-radius:50px;padding:.2rem .7rem;font-size:.75rem;color:var(--orange2)}
+@media(max-width:900px){
+.hero-grid,.analytics-wrap,.seo-grid,.contact-wrap{grid-template-columns:1fr}
+.hero-right{display:none}
+.faq-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+.form-grid{grid-template-columns:1fr}
+.social-float{display:none}
+.nav-links{display:none}
+.hamburger{display:flex}
+}
+@media(max-width:600px){
+.footer-grid{grid-template-columns:1fr}
+.pricing-grid,.cases-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="social-float">
+  <div class="sf-btn" onclick="openLink('https://instagram.com')"><img src="https://drive.google.com/thumbnail?id=17JVy1Bnc66k3jW0grNGj8hum1GD7ar74&sz=w200" alt="Instagram"/><span class="sf-tooltip">Instagram</span></div>
+  <div class="sf-btn" onclick="openLink('https://facebook.com')"><img src="https://drive.google.com/thumbnail?id=1GUXCdry1wWjE9S2jDKSTGuTsQ29rBMHh&sz=w200" alt="Facebook"/><span class="sf-tooltip">Facebook</span></div>
+  <div class="sf-btn" onclick="openLink('https://linkedin.com')"><img src="https://drive.google.com/thumbnail?id=1PtNeyN8h54qF1lTLx9UnBY0rDNE5K10h&sz=w200" alt="LinkedIn"/><span class="sf-tooltip">LinkedIn</span></div>
+</div>
+
+<div class="wa-float" onclick="openLink('https://wa.me/923002222044?text=Hi%20Robusto!%20I%27d%20like%20to%20discuss%20my%20digital%20growth%20plan.')">
+  <div class="wa-label">Chat on WhatsApp</div>
+  <div class="wa-btn"><img src="https://drive.google.com/thumbnail?id=1lWxSznUXRNdyyoM8bRagNllglZHQ3Ehl&sz=w200" alt="WhatsApp"/></div>
+</div>
+
+<nav id="mainNav">
+  <div class="logo">
+    <div class="logo-icon"><img src="https://drive.google.com/thumbnail?id=16YxDnl-q-VI4s1SE-fcO1qhy3DZEpZht&sz=w200" alt="Robusto.tech Logo"/></div>
+    <div><span>Robusto</span><span style="color:var(--text);-webkit-text-fill-color:var(--text)">.tech</span><small>Digital Growth Agency</small></div>
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#analytics">Analytics</a>
+    <a href="#casestudies">Case Studies</a>
+    <a href="#seo">SEO &amp; AI</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:.8rem">
+    <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services"    onclick="toggleMenu()">Services</a>
+  <a href="#analytics"   onclick="toggleMenu()">Analytics</a>
+  <a href="#casestudies" onclick="toggleMenu()">Case Studies</a>
+  <a href="#seo"         onclick="toggleMenu()">SEO &amp; AI</a>
+  <a href="#pricing"     onclick="toggleMenu()">Pricing</a>
+  <a href="#contact"     onclick="toggleMenu()">Contact</a>
+</div>
+
+<section class="hero" id="home">
+  <div class="hero-bg"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-badge">🔥 Lahore's #1 Digital Growth Agency</div>
+      <h1>We Turn Brands Into <span>Digital Powerhouses</span></h1>
+      <p class="hero-sub">From social media domination to AI-powered SEO — we craft data-driven growth strategies that deliver measurable ROI for ambitious Pakistani brands.</p>
+      <div class="hero-btns">
+        <button class="btn-secondary" onclick="document.getElementById('casestudies').scrollIntoView({behavior:'smooth'})">📊 See Our Results</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong class="counter" data-target="150">0</strong><span>Brands Grown</span></div>
+        <div class="hero-stat"><strong class="counter" data-target="480">0</strong><span>% Avg. Growth</span></div>
+        <div class="hero-stat"><strong class="counter" data-target="98">0</strong><span>% Client Retention</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="dashboard-card">
+        <div class="dash-header"><span class="dash-title">📈 Live Performance Dashboard</span><span class="dash-live">Live</span></div>
+        <div class="kpi-grid">
+          <div class="kpi-box"><div class="kpi-val" id="kpi1">0</div><div class="kpi-label">Impressions Today</div><div class="kpi-delta">↑ 23.4% vs yesterday</div></div>
+          <div class="kpi-box"><div class="kpi-val" id="kpi2">0</div><div class="kpi-label">Engagements</div><div class="kpi-delta">↑ 18.7% this week</div></div>
+          <div class="kpi-box"><div class="kpi-val" id="kpi3">0</div><div class="kpi-label">New Leads</div><div class="kpi-delta">↑ 41.2% this month</div></div>
+          <div class="kpi-box"><div class="kpi-val" id="kpi4">0%</div><div class="kpi-label">Avg. ROAS</div><div class="kpi-delta">↑ 2.1x last quarter</div></div>
+        </div>
+        <div class="mini-chart">
+          <svg viewBox="0 0 300 60" preserveAspectRatio="none">
+            <defs><linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff6b1a" stop-opacity="0.3"/><stop offset="100%" stop-color="#ff6b1a" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0,50 L20,42 L40,38 L60,35 L80,28 L100,24 L120,20 L140,18 L160,14 L180,10 L200,8 L220,6 L240,4 L260,3 L280,2 L300,1 L300,60 L0,60 Z" fill="url(#lineGrad)"/>
+            <path d="M0,50 L20,42 L40,38 L60,35 L80,28 L100,24 L120,20 L140,18 L160,14 L180,10 L200,8 L220,6 L240,4 L260,3 L280,2 L300,1" fill="none" stroke="#ff6b1a" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="platform-bars">
+          <div class="p-bar"><span class="p-bar-label">Instagram</span><div class="p-bar-track"><div class="p-bar-fill" style="width:0%" data-w="88%"></div></div><span class="p-bar-pct">88%</span></div>
+          <div class="p-bar"><span class="p-bar-label">Facebook</span><div class="p-bar-track"><div class="p-bar-fill" style="width:0%" data-w="74%"></div></div><span class="p-bar-pct">74%</span></div>
+          <div class="p-bar"><span class="p-bar-label">Google</span><div class="p-bar-track"><div class="p-bar-fill" style="width:0%" data-w="92%"></div></div><span class="p-bar-pct">92%</span></div>
+          <div class="p-bar"><span class="p-bar-label">TikTok</span><div class="p-bar-track"><div class="p-bar-fill" style="width:0%" data-w="61%"></div></div><span class="p-bar-pct">61%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="clients">
+  <div class="clients-inner">
+    <span class="clients-label">Trusted by</span>
+    <div class="clients-scroll">
+      <div class="client-logo"><div class="client-dot">F</div>FBL Industries Pvt Ltd</div>
+      <div class="client-logo"><div class="client-dot">O</div>Orica Engineering Pvt Ltd</div>
+      <div class="client-logo"><div class="client-dot">R</div>RoofGrip Pvt Ltd</div>
+      <div class="client-logo"><div class="client-dot">F</div>FBL Industries Pvt Ltd</div>
+      <div class="client-logo"><div class="client-dot">O</div>Orica Engineering Pvt Ltd</div>
+      <div class="client-logo"><div class="client-dot">R</div>RoofGrip Pvt Ltd</div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <div class="section-badge">Our Services</div>
+    <h2>Everything Your Brand Needs to <span>Dominate Online</span></h2>
+    <p class="section-sub">From strategy to execution — we handle every pillar of your digital presence with precision and creativity.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">📱</div><h3>Social Media Marketing</h3><p>Full-funnel social campaigns across Instagram, Facebook, and LinkedIn. We create content that converts followers into customers with data-backed creative strategy.</p><div class="service-tags"><span class="tag">Content Creation</span><span class="tag">Paid Social</span><span class="tag">Community Mgmt</span><span class="tag">Stories &amp; Reels</span></div></div>
+      <div class="service-card"><div class="service-icon">🔍</div><h3>SEO &amp; Entity-Based SEO</h3><p>Next-generation SEO that builds topical authority and entity relationships. We make sure Google knows exactly what your brand stands for — and rewards it with rankings.</p><div class="service-tags"><span class="tag">On-Page SEO</span><span class="tag">Entity SEO</span><span class="tag">Link Building</span><span class="tag">Local SEO</span></div></div>
+      <div class="service-card"><div class="service-icon">🤖</div><h3>AI + SEO / AEO</h3><p>Future-proof your brand for the AI search era. We optimise for Answer Engine Optimisation (AEO) so your content surfaces in AI-generated answers, Google SGE, and Perplexity.</p><div class="service-tags"><span class="tag">AEO</span><span class="tag">Google SGE</span><span class="tag">AI Content</span><span class="tag">Schema Markup</span></div></div>
+      <div class="service-card"><div class="service-icon">🎯</div><h3>Performance Marketing</h3><p>ROI-obsessed paid advertising across Google, Meta, and programmatic channels. Every rupee tracked, every ad optimised for maximum return on ad spend.</p><div class="service-tags"><span class="tag">Google Ads</span><span class="tag">Meta Ads</span><span class="tag">Retargeting</span><span class="tag">CRO</span></div></div>
+      <div class="service-card"><div class="service-icon">✍️</div><h3>Content-Led Growth</h3><p>Strategic content ecosystems that build brand authority, drive organic traffic, and nurture leads across every stage of the buyer journey.</p><div class="service-tags"><span class="tag">Content Strategy</span><span class="tag">Copywriting</span><span class="tag">Video Scripts</span><span class="tag">Email</span></div></div>
+      <div class="service-card"><div class="service-icon">📊</div><h3>Analytics &amp; Reporting</h3><p>Custom dashboards, monthly deep-dives, and actionable insights. We don't just show you numbers — we explain what they mean and what to do next.</p><div class="service-tags"><span class="tag">GA4</span><span class="tag">Custom Dashboards</span><span class="tag">Attribution</span><span class="tag">KPI Tracking</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="analytics" style="background:var(--bg2)">
+  <div class="container">
+    <div class="analytics-wrap">
+      <div class="analytics-left">
+        <div class="section-badge">Performance Analytics</div>
+        <h2>Real-Time Growth <span>Intelligence</span></h2>
+        <p style="color:var(--text2);margin-bottom:1.5rem">Every campaign is tracked, measured, and optimised in real time. Our proprietary reporting gives you complete transparency on where your growth is coming from.</p>
+        <div class="analytics-features">
+          <div class="af-item"><div class="af-icon">📡</div><div><h4>Cross-Platform Attribution</h4><p>Unified tracking across all channels — know exactly which touchpoint drives conversions.</p></div></div>
+          <div class="af-item"><div class="af-icon">🧠</div><div><h4>AI-Powered Insights</h4><p>Machine learning models that predict campaign performance and surface optimisation opportunities.</p></div></div>
+          <div class="af-item"><div class="af-icon">⚡</div><div><h4>Real-Time Dashboards</h4><p>24/7 access to live performance data — your own command centre for digital growth.</p></div></div>
+          <div class="af-item"><div class="af-icon">📋</div><div><h4>Monthly Strategy Reviews</h4><p>Deep-dive sessions where we review data, share insights, and plan next month's growth sprint.</p></div></div>
+        </div>
+      </div>
+      <div class="analytics-right">
+        <div class="big-chart">
+          <div class="chart-header">
+            <div>
+              <div style="font-size:.85rem;color:var(--text2);margin-bottom:.2rem">Organic Growth Trend</div>
+              <div style="font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--orange),var(--orange2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">+347% YoY</div>
+            </div>
+            <div class="chart-tabs">
+              <button class="chart-tab active" onclick="switchTab(this,'30d')">30D</button>
+              <button class="chart-tab" onclick="switchTab(this,'90d')">90D</button>
+              <button class="chart-tab" onclick="switchTab(this,'1y')">1Y</button>
+            </div>
+          </div>
+          <div class="chart-area"><canvas id="growthCanvas"></canvas></div>
+          <div style="display:flex;gap:1.5rem;margin-top:1rem">
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--text2)"><span style="width:12px;height:3px;background:var(--orange);display:inline-block;border-radius:2px"></span>Organic Traffic</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--text2)"><span style="width:12px;height:3px;background:#6644ff;display:inline-block;border-radius:2px"></span>Paid Traffic</div>
+            <div style="display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--text2)"><span style="width:12px;height:3px;background:#22dd88;display:inline-block;border-radius:2px"></span>Conversions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="casestudies">
+  <div class="container">
+    <div class="section-badge">Case Studies</div>
+    <h2>Real Brands. <span>Real Results.</span></h2>
+    <p class="section-sub">These are actual client outcomes — metrics verified internally. Detailed breakdowns available on request under NDA.</p>
+    <div class="cases-grid">
+      <div class="case-card"><div class="case-header"><div class="case-client">FBL Industries Pvt Ltd</div><div class="case-title">B2B Lead Generation &amp; LinkedIn Authority</div></div><div class="case-body"><div class="case-metrics"><div class="metric"><strong>+320%</strong><small>LinkedIn Reach</small></div><div class="metric"><strong>47</strong><small>Monthly Leads</small></div><div class="metric"><strong>4.2x</strong><small>ROAS</small></div></div><div class="case-desc">FBL Industries needed to establish digital authority in the industrial sector. We built a LinkedIn content engine, targeted Google Search campaigns, and entity-optimised their website — transforming them from invisible to industry reference within 6 months. Avg. cost per qualified lead reduced from Rs 4,800 to Rs 1,100.</div></div></div>
+      <div class="case-card"><div class="case-header"><div class="case-client">Orica Engineering Pvt Ltd</div><div class="case-title">SEO + Content Strategy for Engineering Brand</div></div><div class="case-body"><div class="case-metrics"><div class="metric"><strong>+580%</strong><small>Organic Traffic</small></div><div class="metric"><strong>Page 1</strong><small>18 Keywords</small></div><div class="metric"><strong>62%</strong><small>Lower Bounce Rate</small></div></div><div class="case-desc">Orica Engineering was barely visible online despite being a top-tier firm. We executed a full entity-based SEO overhaul, built a content hub targeting high-intent engineering queries, and restructured site architecture — driving 580% more organic traffic in 8 months and landing 18 competitive keywords on Page 1.</div></div></div>
+      <div class="case-card"><div class="case-header"><div class="case-client">RoofGrip Pvt Ltd</div><div class="case-title">Instagram Growth &amp; Performance Ads</div></div><div class="case-body"><div class="case-metrics"><div class="metric"><strong>0→22K</strong><small>Instagram Followers</small></div><div class="metric"><strong>3.8x</strong><small>Meta ROAS</small></div><div class="metric"><strong>+410%</strong><small>Website Enquiries</small></div></div><div class="case-desc">RoofGrip launched with zero social presence. We built their entire digital identity from scratch — brand voice, content templates, reels strategy, and a Meta ads funnel. Result: 22K genuine followers in 5 months, 3.8x return on Meta ad spend, and 410% increase in website enquiries.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="seo" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-badge">SEO &amp; AI Search</div>
+    <h2>Built for the <span>AI Search Era</span></h2>
+    <p class="section-sub">Traditional SEO is evolving. We combine entity-based SEO, AEO, and AI-optimised content to ensure your brand appears everywhere your customers search.</p>
+    <div class="seo-grid">
+      <div>
+        <div class="entity-box">
+          <h3>🕸️ Entity Graph — Your Brand Universe</h3>
+          <div style="text-align:center;padding:1rem 0">
+            <div style="display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange3));font-size:.9rem;font-weight:800;color:#fff;margin-bottom:1rem">Your Brand</div>
+            <div class="connection-line"></div>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem;margin-bottom:.8rem">
+              <span class="entity-tag"><span class="dot"></span>Industry Topic</span>
+              <span class="entity-tag"><span class="dot"></span>Products/Services</span>
+              <span class="entity-tag"><span class="dot"></span>Location Signals</span>
+              <span class="entity-tag"><span class="dot"></span>Team/Founders</span>
+              <span class="entity-tag"><span class="dot"></span>Client Reviews</span>
+              <span class="entity-tag"><span class="dot"></span>Awards &amp; PR</span>
+              <span class="entity-tag"><span class="dot"></span>Schema Markup</span>
+              <span class="entity-tag"><span class="dot"></span>Knowledge Panel</span>
+            </div>
+            <div class="connection-line"></div>
+            <div style="font-size:.85rem;color:var(--text2)">Google understands your brand as an authoritative entity — not just a website</div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;background:var(--card);border:1px solid var(--orange-border);border-radius:var(--radius);padding:1rem">
+          <div style="font-size:.85rem;font-weight:700;margin-bottom:.5rem">🤖 AEO — Answer Engine Optimisation</div>
+          <p style="font-size:.83rem;color:var(--text2);line-height:1.6">We structure your content so AI tools like Google SGE, Perplexity, ChatGPT, and Copilot cite YOUR brand when answering your customers' questions.</p>
+          <div style="display:flex;gap:.5rem;margin-top:.8rem;flex-wrap:wrap"><span class="tag">Google SGE</span><span class="tag">Perplexity</span><span class="tag">ChatGPT</span><span class="tag">Copilot</span></div>
+        </div>
+      </div>
+      <div class="seo-pillars">
+        <div class="seo-pillar"><div class="pillar-num">01</div><div><h4>Technical SEO Foundation</h4><p>Core Web Vitals, site architecture, crawlability, indexation — the infrastructure that lets everything else work.</p></div></div>
+        <div class="seo-pillar"><div class="pillar-num">02</div><div><h4>Topical Authority Building</h4><p>Comprehensive content clusters that establish your brand as the definitive resource in your niche.</p></div></div>
+        <div class="seo-pillar"><div class="pillar-num">03</div><div><h4>Entity Optimisation</h4><p>Schema markup, Google Knowledge Graph optimisation, NAP consistency, and entity co-citation across authoritative sources.</p></div></div>
+        <div class="seo-pillar"><div class="pillar-num">04</div><div><h4>E-E-A-T Signals</h4><p>Build Experience, Expertise, Authoritativeness, and Trust signals that Google rewards with sustained top rankings.</p></div></div>
+        <div class="seo-pillar"><div class="pillar-num">05</div><div><h4>AI-Ready Content</h4><p>Structured, factual, cite-worthy content formatted for AI models to surface your brand in generated answers.</p></div></div>
+        <div class="seo-pillar"><div class="pillar-num">06</div><div><h4>Local SEO &amp; GMB</h4><p>Dominate "near me" searches in Lahore and beyond. Google Business Profile optimisation + local citation building.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="testimonials">
+  <div class="container">
+    <div class="section-badge">Client Testimonials</div>
+    <h2>What Our <span>Clients Say</span></h2>
+    <p class="section-sub">Don't take our word for it — hear from the brands that have grown with Robusto.tech.</p>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="stars">★★★★★</div><div class="testi-text">"The transparency and reporting from Robusto is exceptional. We see exactly where every rupee is going and what return it's generating. Finally, a digital agency that speaks the language of business outcomes."</div><div class="testi-author"><div class="author-av">ZH</div><div><div class="author-name">Z. Hassan</div><div class="author-role">Marketing Manager</div></div></div></div>
+      <div class="testi-card"><div class="stars">★★★★★</div><div class="testi-text">"Our Google rankings and organic traffic have grown consistently every single month. Robusto's SEO team knows what they're doing and communicates clearly. We feel like we have a growth partner, not just a vendor."</div><div class="testi-author"><div class="author-av">FI</div><div><div class="author-name">F. Iqbal</div><div class="author-role">E-commerce Director</div></div></div></div>
+      <div class="testi-card"><div class="stars">★★★★★</div><div class="testi-text">"Content strategy was our biggest gap. Robusto built us a complete content calendar, wrote SEO-optimised blogs, and set up email sequences. Our brand authority has never been higher."</div><div class="testi-author"><div class="author-av">NB</div><div><div class="author-name">N. Butt</div><div class="author-role">Head of Marketing</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <div class="section-badge">Pricing Plans</div>
+    <h2>Transparent Pricing for <span>Serious Growth</span></h2>
+    <p class="section-sub">No hidden fees. No lock-in surprises. Choose the plan that matches your ambition.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Starter</div><div class="price-amount">PKR 45K <span>/month</span></div>
+        <div class="price-desc">Perfect for SMEs taking their first serious step into digital marketing.</div>
+        <ul class="price-features"><li>Social Media Management (2 platforms)</li><li>12 posts/month + captions</li><li>Basic SEO Audit + On-Page</li><li>Monthly performance report</li><li>WhatsApp account manager</li><li class="no">Paid Ads Management</li><li class="no">Content-Led Growth Strategy</li><li class="no">Entity SEO / AEO</li></ul>
+        <button class="btn-price outline" onclick="openLink('https://wa.me/923002222044?text=Hi!%20I%27m%20interested%20in%20the%20Starter%20plan.')">Get Started</button>
+      </div>
+      <div class="price-card featured">
+        <div class="price-name">Growth</div><div class="price-amount">PKR 95K <span>/month</span></div>
+        <div class="price-desc">For brands serious about market dominance across all key channels.</div>
+        <ul class="price-features"><li>Social Media (4 platforms)</li><li>20 posts + Stories + Reels</li><li>Full SEO + Entity SEO</li><li>AEO / AI Search Optimisation</li><li>Google + Meta Ads Management</li><li>Content Strategy + 4 blogs/month</li><li>Bi-weekly strategy calls</li><li>Real-time dashboard access</li></ul>
+        <button class="btn-price solid" onclick="openLink('https://wa.me/923002222044?text=Hi!%20I%27m%20interested%20in%20the%20Growth%20plan.')">Get Started →</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Enterprise</div><div class="price-amount">Custom <span>pricing</span></div>
+        <div class="price-desc">Fully bespoke digital growth strategy for large brands with complex needs.</div>
+        <ul class="price-features"><li>Everything in Growth</li><li>Dedicated growth team</li><li>Full content production studio</li><li>PR + Influencer partnerships</li><li>Video production &amp; scripting</li><li>Multi-channel attribution model</li><li>Weekly strategy sessions</li><li>SLA-backed deliverables</li></ul>
+        <button class="btn-price outline" onclick="openLink('https://wa.me/923002222044?text=Hi!%20I%27d%20like%20to%20discuss%20an%20Enterprise%20growth%20strategy.')">Let's Talk</button>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;padding:1.5rem;background:var(--card);border:1px solid var(--orange-border);border-radius:var(--radius);max-width:600px;margin-left:auto;margin-right:auto">
+      <div style="font-size:.9rem;font-weight:700;margin-bottom:.3rem">🤝 Not sure which plan is right for you?</div>
+      <div style="font-size:.85rem;color:var(--text2);margin-bottom:1rem">Get a free 30-minute strategy consultation. We'll audit your current presence and recommend the right approach.</div>
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Free Strategy Consultation</button>
+    </div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-badge">FAQ</div>
+    <h2>Frequently Asked <span>Questions</span></h2>
+    <p class="section-sub">Everything you need to know about working with Robusto.tech.</p>
+    <div class="faq-grid">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>How long before we see results?</h4><div class="faq-icon">+</div></div><div class="faq-a">Social media engagement typically improves within the first month. SEO results begin showing in 3–4 months, with significant organic growth by month 6. Paid ads can show ROI within weeks.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>Do you work with businesses outside Lahore?</h4><div class="faq-icon">+</div></div><div class="faq-a">Absolutely. While we're based in Lahore, we serve clients across Pakistan and internationally. All collaboration is handled remotely via WhatsApp, Zoom, and our reporting dashboards.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>What makes your SEO different from standard agencies?</h4><div class="faq-icon">+</div></div><div class="faq-a">We practice entity-based SEO and Answer Engine Optimisation (AEO). We're building for where search is heading — AI answers, Google SGE — not just where it's been. This gives our clients a significant, sustainable edge.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>Is there a minimum contract period?</h4><div class="faq-icon">+</div></div><div class="faq-a">We recommend a minimum 3-month engagement for SEO and content. Social media and paid ads can start monthly. We don't believe in forcing lock-ins — we earn your business every month with results.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>Who creates the content?</h4><div class="faq-icon">+</div></div><div class="faq-a">We handle everything — strategy, copywriting, design, scheduling, and reporting. For some campaigns we may request product photos or brand assets. We provide a clear onboarding checklist.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>How do you report on performance?</h4><div class="faq-icon">+</div></div><div class="faq-a">Every client gets access to a live dashboard, plus monthly written reports with executive summaries, key metrics, wins, challenges, and next month's plan. Growth and Enterprise clients get bi-weekly strategy calls.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>Do you offer one-time audits?</h4><div class="faq-icon">+</div></div><div class="faq-a">Yes — we offer one-time SEO audits, social media audits, and paid ads account reviews starting from PKR 15,000. Includes a detailed report with prioritised action items.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><h4>What industries do you specialise in?</h4><div class="faq-icon">+</div></div><div class="faq-a">We've delivered results for industrial/engineering B2B, construction &amp; real estate, e-commerce, professional services, healthcare, and hospitality. Our methodology adapts to any sector.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-badge">Get In Touch</div>
+    <h2>Let's Start Your <span>Growth Journey</span></h2>
+    <p class="section-sub">We're based in Lahore and work with ambitious brands across Pakistan. Reach out — first consultation is always free.</p>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h3 style="font-size:1.4rem;font-weight:700;margin-bottom:1rem">Talk to Us Directly</h3>
+        <p style="color:var(--text2);font-size:.9rem;margin-bottom:1.5rem">No generic pitch decks. We'll listen to your goals and tell you honestly what will drive growth for your specific business.</p>
+        <div class="contact-detail"><div class="contact-icon">📧</div><div class="contact-text"><strong>Email</strong><span>robusto.tech@gmail.com</span></div></div>
+        <div class="contact-detail" style="cursor:pointer" onclick="openLink('https://wa.me/923002222044')"><div class="contact-icon"><img src="https://drive.google.com/thumbnail?id=1lWxSznUXRNdyyoM8bRagNllglZHQ3Ehl&sz=w200" alt="WhatsApp"/></div><div class="contact-text"><strong>WhatsApp (Preferred)</strong><span>+92 300 222 2044</span></div></div>
+        <div class="contact-detail"><div class="contact-icon">📞</div><div class="contact-text"><strong>Phone</strong><span>+92 300 222 2044</span></div></div>
+        <div class="contact-detail"><div class="contact-icon">📍</div><div class="contact-text"><strong>Office</strong><span>3 Ahmed Arcade, Temple Road, Lahore</span></div></div>
+        <div class="social-links">
+          <div class="social-btn" onclick="openLink('https://instagram.com')"><img src="https://drive.google.com/thumbnail?id=17JVy1Bnc66k3jW0grNGj8hum1GD7ar74&sz=w200" alt="Instagram"/></div>
+          <div class="social-btn" onclick="openLink('https://facebook.com')"><img src="https://drive.google.com/thumbnail?id=1GUXCdry1wWjE9S2jDKSTGuTsQ29rBMHh&sz=w200" alt="Facebook"/></div>
+          <div class="social-btn" onclick="openLink('https://linkedin.com')"><img src="https://drive.google.com/thumbnail?id=1PtNeyN8h54qF1lTLx9UnBY0rDNE5K10h&sz=w200" alt="LinkedIn"/></div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="wizard-wrap" style="padding:2rem">
+          <div style="font-size:1.1rem;font-weight:700;margin-bottom:1.5rem">Send Us a Message</div>
+          <div class="form-grid">
+            <div><label>Name</label><input type="text" placeholder="Your full name" id="cfName"/></div>
+            <div><label>Company</label><input type="text" placeholder="Company name" id="cfCompany"/></div>
+          </div>
+          <div style="margin-bottom:1rem"><label>Email</label><input type="email" placeholder="your@email.com" id="cfEmail"/></div>
+          <div style="margin-bottom:1rem"><label>Phone / WhatsApp</label><input type="tel" placeholder="+92 3XX XXXXXXX" id="cfPhone"/></div>
+          <div style="margin-bottom:1rem">
+            <label>Service Interested In</label>
+            <select id="cfService">
+              <option value="">Select a service...</option>
+              <option>Social Media Marketing</option>
+              <option>SEO / Entity-Based SEO</option>
+              <option>AI + AEO Optimisation</option>
+              <option>Performance Marketing (Ads)</option>
+              <option>Content Strategy</option>
+              <option>Full Growth Retainer</option>
+              <option>One-Time Audit</option>
+            </select>
+          </div>
+          <div style="margin-bottom:1.5rem"><label>Message</label><textarea placeholder="Tell us about your brand, goals, and challenges..." id="cfMsg"></textarea></div>
+          <button class="btn-primary" style="width:100%" id="cfSubmitBtn" onclick="submitContact()">Send Message &amp; Get Free Consultation →</button>
+          <div id="cfStatus"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="margin-bottom:.8rem">
+        <div class="logo-icon" style="width:36px;height:36px"><img src="https://drive.google.com/thumbnail?id=16YxDnl-q-VI4s1SE-fcO1qhy3DZEpZht&sz=w200" alt="Robusto.tech Logo"/></div>
+        <span style="font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#ff6b1a,#ff8c42);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Robusto.tech</span>
+      </div>
+      <p>Lahore's digital growth agency for ambitious brands. We combine strategy, creativity, and data to deliver growth that compounds.</p>
+      <div class="ai-badge" style="margin-top:.5rem">🤖 AI-SEO Ready Agency 2025</div>
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="#services">Social Media Marketing</a></li><li><a href="#seo">SEO &amp; Entity SEO</a></li><li><a href="#seo">AEO / AI Search</a></li><li><a href="#services">Performance Ads</a></li><li><a href="#services">Content Strategy</a></li><li><a href="#analytics">Analytics &amp; Reporting</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="#casestudies">Case Studies</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li><a href="mailto:robusto.tech@gmail.com">robusto.tech@gmail.com</a></li><li><a href="https://wa.me/923002222044">+92 300 222 2044</a></li><li><a href="#">3 Ahmed Arcade</a></li><li><a href="#">Temple Road, Lahore</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Robusto.tech. All rights reserved. | Lahore, Pakistan</span>
+    <span>Built for growth 🚀</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+function openLink(url){ window.open(url,'_blank'); }
+
+function toggleTheme(){
+  var d=document.documentElement, t=d.getAttribute('data-theme');
+  d.setAttribute('data-theme', t==='dark'?'light':'dark');
+  document.getElementById('themeToggle').textContent = t==='dark'?'🌙':'☀️';
+  if(growthChart){
+    var tc=getComputedStyle(d).getPropertyValue('--text2');
+    growthChart.options.scales.x.ticks.color=tc;
+    growthChart.options.scales.y.ticks.color=tc;
+    growthChart.update();
+  }
+}
+
+function toggleMenu(){
+  var m=document.getElementById('mobileMenu');
+  m.style.display = m.style.display==='flex'?'none':'flex';
+}
+
+function animateCounter(el,target){
+  var cur=0, inc=target/60;
+  var iv=setInterval(function(){
+    cur=Math.min(cur+inc,target);
+    el.textContent=Math.round(cur)+'+';
+    if(cur>=target) clearInterval(iv);
+  },25);
+}
+var hObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      document.querySelectorAll('.counter').forEach(function(el){
+        animateCounter(el,parseInt(el.dataset.target));
+      });
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.hero-stats').forEach(function(el){ hObs.observe(el); });
+
+function animateKPI(id,target){
+  var el=document.getElementById(id); if(!el) return;
+  var cur=0, inc=target/80;
+  var iv=setInterval(function(){
+    cur=Math.min(cur+inc,target);
+    el.textContent=Math.round(cur).toLocaleString();
+    if(cur>=target) clearInterval(iv);
+  },20);
+}
+setTimeout(function(){
+  animateKPI('kpi1',284500);
+  animateKPI('kpi2',18340);
+  animateKPI('kpi3',127);
+  var k4=document.getElementById('kpi4'); if(k4) k4.textContent='486%';
+},800);
+
+setTimeout(function(){
+  document.querySelectorAll('.p-bar-fill').forEach(function(b){ b.style.width=b.dataset.w; });
+},1200);
+
+function toggleFaq(el){ el.parentElement.classList.toggle('open'); }
+
+function submitContact(){
+  var name=document.getElementById('cfName').value.trim();
+  var company=document.getElementById('cfCompany').value.trim();
+  var email=document.getElementById('cfEmail').value.trim();
+  var phone=document.getElementById('cfPhone').value.trim();
+  var service=document.getElementById('cfService').value;
+  var message=document.getElementById('cfMsg').value.trim();
+  var btn=document.getElementById('cfSubmitBtn');
+  var status=document.getElementById('cfStatus');
+
+  if(!name||!email){
+    status.className='waiting'; status.style.display='block';
+    status.textContent='Please fill in your name and email.'; return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    status.className='waiting'; status.style.display='block';
+    status.textContent='Please enter a valid email address.'; return;
+  }
+
+  btn.disabled=true; btn.style.opacity='0.6';
+  status.className='waiting'; status.style.display='block';
+  status.textContent='Wait...';
+
+  var formData={name:name,company:company,email:email,phone:phone,service:service,message:message};
+
+  if(typeof google==='undefined'||typeof google.script==='undefined'){
+    status.className='waiting';
+    status.textContent='Form only works when deployed via Google Apps Script.';
+    btn.disabled=false; btn.style.opacity='1'; return;
+  }
+
+  google.script.run
+    .withSuccessHandler(function(){
+      status.className='done'; status.textContent='Submitted ✓';
+      btn.style.display='none';
+      ['cfName','cfCompany','cfEmail','cfPhone','cfService','cfMsg'].forEach(function(id){
+        document.getElementById(id).value='';
+      });
+    })
+    .withFailureHandler(function(err){
+      status.className='waiting';
+      status.textContent='Something went wrong. Please try WhatsApp instead.';
+      btn.disabled=false; btn.style.opacity='1';
+      console.error('Error:',err);
+    })
+    .sendContactEmails(formData);
+}
+
+var growthChart;
+function switchTab(btn,range){
+  document.querySelectorAll('.chart-tab').forEach(function(t){ t.classList.remove('active'); });
+  btn.classList.add('active');
+  updateChart(range);
+}
+
+function initChart(){
+  var ctx=document.getElementById('growthCanvas');
+  if(!ctx||typeof Chart==='undefined') return;
+  var tc=getComputedStyle(document.documentElement).getPropertyValue('--text2')||'#a0a0b8';
+  var d30={organic:[1200,1800,2600,3400],paid:[800,1100,1400,1800],conv:[45,72,98,134]};
+  var d90={organic:[1200,2200,3400],paid:[800,1200,1800],conv:[45,98,134]};
+  var d1y={organic:[800,1000,1200,1600,2000,2600,3000,3400,3800,4200,4600,5000],paid:[400,500,600,800,1000,1200,1300,1400,1500,1600,1700,1800],conv:[20,28,35,45,62,80,95,110,125,140,155,170]};
+  window._cData={d30:d30,d90:d90,d1y:d1y,l30:['W1','W2','W3','W4'],l90:['Jan','Feb','Mar'],l1y:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']};
+  growthChart=new Chart(ctx,{
+    type:'line',
+    data:{
+      labels:window._cData.l30,
+      datasets:[
+        {label:'Organic Traffic',data:d30.organic,borderColor:'#ff6b1a',backgroundColor:'rgba(255,107,26,0.08)',borderWidth:2.5,tension:.4,fill:true,pointRadius:4,pointHoverRadius:6,pointBackgroundColor:'#ff6b1a'},
+        {label:'Paid Traffic',data:d30.paid,borderColor:'#6644ff',backgroundColor:'rgba(102,68,255,0.08)',borderWidth:2,tension:.4,fill:true,pointRadius:3,pointHoverRadius:5},
+        {label:'Conversions',data:d30.conv,borderColor:'#22dd88',backgroundColor:'rgba(34,221,136,0.08)',borderWidth:2,tension:.4,fill:true,pointRadius:3,pointHoverRadius:5}
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(10,10,15,0.9)',borderColor:'rgba(255,107,26,0.3)',borderWidth:1,titleColor:'#f0f0f8',bodyColor:'#a0a0b8',padding:12}},
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:tc,font:{size:11}}},
+        y:{grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:tc,font:{size:11}},position:'left'}
+      }
+    }
+  });
+}
+
+function updateChart(range){
+  if(!growthChart||!window._cData) return;
+  var d=window._cData;
+  var map={'30d':{o:d.d30.organic,p:d.d30.paid,c:d.d30.conv,l:d.l30},'90d':{o:d.d90.organic,p:d.d90.paid,c:d.d90.conv,l:d.l90},'1y':{o:d.d1y.organic,p:d.d1y.paid,c:d.d1y.conv,l:d.l1y}};
+  var r=map[range]||map['30d'];
+  growthChart.data.labels=r.l;
+  growthChart.data.datasets[0].data=r.o;
+  growthChart.data.datasets[1].data=r.p;
+  growthChart.data.datasets[2].data=r.c;
+  growthChart.update('active');
+}
+
+if(typeof Chart!=='undefined'){
+  initChart();
+} else {
+  var cw=setInterval(function(){ if(typeof Chart!=='undefined'){ clearInterval(cw); initChart(); } },100);
+}
+
+window.addEventListener('scroll',function(){
+  var nav=document.getElementById('mainNav');
+  if(nav) nav.style.boxShadow=window.scrollY>50?'0 4px 30px rgba(0,0,0,.3)':'none';
+});
+</script>
+</body>
+</html>
